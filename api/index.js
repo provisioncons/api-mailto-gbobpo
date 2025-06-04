@@ -3,7 +3,10 @@ export default function handler(req, res) {
 
   const mailto = `mailto:provision@provision.com.br?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(descricao)}`;
 
-  res.writeHead(302, { Location: mailto });
-  res.end(`Redirecionando para: ${mailto}`);
+  res.status(200).json({
+    link: mailto,
+    message: `Clique no link para enviar sua sugestão: ${mailto}`
+  });
 }
+
 
